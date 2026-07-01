@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block head %} {{ super() }}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='extended_beaty.css') }}"/>
+{% endblock %} {% block content %}
+<center>
+    <br><br>
+    <h1>Profile Page</h1>
+    <h1>Welcome, {{ name }}</h1>
+    <img src="{{ url_for('static', filename='images/muscle.png')}}" alt="Workout Image" height="300px"/>
+</center>
+{% endblock %}

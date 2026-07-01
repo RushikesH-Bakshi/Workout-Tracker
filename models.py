@@ -1,0 +1,22 @@
+try:
+    from . import db
+except ImportError:
+    import __init__ as app_module
+    db = app_module.db
+
+from flask_login import UserMixin
+from datetime import date
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(100))
+    workouts = db.relationship('Workout', backref='author' ,lazy=True)
+
+class Workout(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    count = db.Column(db.Integer, nullable=False)
+    date_posted = db.Column(db.Date, nullable=False, default=date.today)
+    comment = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

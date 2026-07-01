@@ -1,0 +1,17 @@
+# python bytecode files
+__pycache__/
+
+# DB Migrations
+migrations
+
+# Virtual ENV
+venv
+
+# ENV Variables
+.flaskenv
+
+# Database file
+database.db
+
+# Notes
+notes.txt
