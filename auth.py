@@ -12,7 +12,7 @@ except ImportError:
 
 auth = Blueprint("auth", __name__)
 
-@auth.route("/signin", methods=['GET', 'POST'])
+@auth.route("/api/signin", methods=['GET', 'POST'])
 def signin():
     if request.method == 'GET':
         return render_template("signin.html")
@@ -35,7 +35,7 @@ def signin():
 
         return redirect(url_for('auth.login'))
 
-@auth.route("/login", methods=['GET', 'POST'])
+@auth.route("/api/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
         return render_template('login.html')
@@ -54,7 +54,7 @@ def login():
         login_user(user, remember=remember)
         return redirect(url_for('main.profile'))
         
-@auth.route("/logout")
+@auth.route("/api/logout")
 @login_required
 def logout():
     logout_user()
