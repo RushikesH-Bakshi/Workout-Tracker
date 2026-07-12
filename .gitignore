@@ -21,3 +21,6 @@ node_modules/
 
 # Notes
 notes.txt
+
+package.json
+package-lock.json
