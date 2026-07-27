@@ -13,7 +13,20 @@ venv
 # Database file
 database.db
 
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+
 # Notes
 notes.txt
 node_modules
+<<<<<<< HEAD
 .next
+=======
+.next/
+
+package.json
+package-lock.json
+>>>>>>> bd78a976d6aee659814910ca6da24e891531257d
