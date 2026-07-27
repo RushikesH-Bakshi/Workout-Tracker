@@ -23,6 +23,3 @@ node_modules/
 notes.txt
 node_modules
 .next/
-
-package.json
-package-lock.json
