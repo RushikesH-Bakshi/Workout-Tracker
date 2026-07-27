@@ -15,3 +15,5 @@ database.db
 
 # Notes
 notes.txt
+node_modules
+.next
