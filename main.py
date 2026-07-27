@@ -16,14 +16,14 @@ main = Blueprint("main", __name__)
 
 @main.route('/')
 def home():
-    return render_template('index.html')
+    return redirect('./pages/index.js')
 
-@main.route('/profile')
+@main.route('/api/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return redirect('./pages/_app.js', name=current_user.name)
 
-@main.route('/newWorkout', methods=['GET', 'POST'])
+@main.route('/api/newWorkout', methods=['GET', 'POST'])
 @login_required
 def new_workout():
     if request.method == 'GET':
@@ -40,7 +40,7 @@ def new_workout():
         flash("Your workout has been added")
         return redirect(url_for('main.get_workouts'))
     
-@main.route('/getWorkouts', methods=['GET'])
+@main.route('/api/getWorkouts', methods=['GET'])
 @login_required
 def get_workouts():
     page = request.args.get('page', 1, type=int)
@@ -48,7 +48,7 @@ def get_workouts():
     pushup = Workout.query.filter_by(author=current_user).paginate(page=page, per_page=6)
     return render_template("all_workouts.html", user=user, workouts=pushup)
 
-@main.route('/plotGraph', methods=['GET'])
+@main.route('/api/plotGraph', methods=['GET'])
 @login_required
 def plot_graph():
     workout_counts_list = [count for (count,) in Workout.query.with_entities(Workout.count).filter_by(author=current_user).all()]
@@ -71,7 +71,7 @@ def plot_graph():
 
     return send_file(buf, mimetype='image/png', as_attachment=False, download_name='workout_plot.png')
 
-@main.route('/updateWorkout/<int:workout_id>', methods=['GET','POST'])
+@main.route('/api/updateWorkout/<int:workout_id>', methods=['GET','POST', 'PUT'])
 @login_required
 def update_workout(workout_id):
     workout = Workout.query.get_or_404(workout_id)
@@ -86,7 +86,7 @@ def update_workout(workout_id):
 
     return render_template("update_workout.html", workout=workout)
 
-@main.route('/deleteWorkout/<int:workout_id>', methods=['GET'])
+@main.route('/api/deleteWorkout/<int:workout_id>', methods=['GET'])
 @login_required
 def delete_workout(workout_id):
     workout = Workout.query.get_or_404(workout_id)
