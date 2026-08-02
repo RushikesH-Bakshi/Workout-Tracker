@@ -34,15 +34,15 @@ export default function Navbar() {
         <a className="logo">Workout Logger</a>
       </Link>
       <div className="nav-links">
-        <Link href="/api/getWorkouts">
+        <Link href="/">
           <a>All Workouts</a>
         </Link>
-        <Link href="/api/profile">
+        <Link href="/login">
           <a>Account</a>
         </Link>
         {user ? (
           <>
-            <Link href="/api/newWorkout">
+            <Link href="/">
               <a className="button secondary">Add Workout</a>
             </Link>
             <button className="button" type="button" onClick={handleLogout}>
@@ -51,10 +51,10 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <Link href="/api/signin">
+            <Link href="/signup">
               <a className="button secondary">Sign In</a>
             </Link>
-            <Link href="/api/login">
+            <Link href="/login">
               <a className="button">Login</a>
             </Link>
           </>

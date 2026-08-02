@@ -11,7 +11,7 @@ export default function SignupPage() {
     event.preventDefault();
     try {
       await signup(form);
-      router.push('/api/login');
+      router.push('/login');
     } catch (err) {
       setError(err.message);
     }

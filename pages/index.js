@@ -10,10 +10,10 @@ export default function Home() {
             Track your push-ups, manage workouts, and review progress with a clean React-based frontend.
           </p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '24px' }}>
-            <Link href="/api/signup">
+            <Link href="/signup">
               <a className="button">Get Started</a>
             </Link>
-            <Link href="/api/workouts">
+            <Link href="/login">
               <a className="button secondary">Browse Workouts</a>
             </Link>
           </div>

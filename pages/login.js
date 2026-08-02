@@ -12,7 +12,7 @@ export default function LoginPage() {
       event.preventDefault();
       try {
         await login(form);
-        router.push('/api/profile');
+        router.push('/');
       } catch (err) {
         setError(err.message);
       }
